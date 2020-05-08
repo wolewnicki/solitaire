@@ -1,0 +1,52 @@
+input{
+    position: relative;
+    top: 7rem;
+}
+
+b{
+    position: relative;
+    top: 7rem;
+}
+
+button{
+    position: relative;
+    top: 7rem;
+}
+
+.content {
+    position: relative;
+    top: 10rem;
+}
+.content table tbody tr{
+  background: #eee;
+  border: solid transparent;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.content table tbody tr:hover{
+    border: solid blue 
+}
+.content table th {
+    padding: 5px 10px;
+}
+
+h1 {
+    position: relative;
+    top: 9rem;
+}
+.myClass {
+    position: relative;
+    top: 9rem;
+    right: 2rem;
+}
+.bClass {
+    position: relative;
+    top: 10rem;
+}
+.movePlease {
+    position: relative;
+    top: 20rem;
+}
+.activeClass {
+    border: solid salmon;
+}

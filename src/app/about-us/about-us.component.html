@@ -1,0 +1,36 @@
+<p>about-us works!</p>
+
+<b>I am body {{ testVariable }}</b>
+
+<!-- <button (click)="generateText()">Click me to make text appear below</button> -->
+<h1>{{simpleDate}}</h1>
+<button class="myClass btn-dark" (click)="updateDate()">Update the Date!</button>
+<div class="content">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Item Description</th>
+        <th>Item Price</th>
+        <th>Discount</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items" (click)="selectData(item)">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.desc}}</td>
+        <td>{{item.price | currency: 'USD'}}</td>
+        <td>{{discount}}%</td>
+        <td>{{item.price - ((item.price * discount) / 100) | currency: 'USD'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <b class="myClass bClass">{{selectedItemName}}</b>
+</div>
+<button [ngClass]="['movePlease', buttonColor ? 'btn-light' : 'btn-dark']" (click)="changeBool()">I am a Color Changing Button!</button>
