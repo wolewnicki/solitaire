@@ -1,1 +1,13 @@
-<p>draw-card works!</p>
+<button (click)="generateCard()" class="btn-dark">Draw a random Card!</button>
+
+<div class="outline rounded" *ngFor="let card of cards">
+    <div class="top">
+        <span>{{card.rank}}</span>
+        <span>{{card.suit}}</span>
+    </div>
+    <h1>{{card.suit}}</h1>
+    <div class="bottom">
+        <span>{{card.suit}}</span>
+        <span>{{card.rank}}</span>
+    </div>
+</div>

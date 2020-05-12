@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { DrawCardComponent } from './draw-card/draw-card.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'about-us', component: AboutUsComponent } 
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'draw-card', component: DrawCardComponent}
 ];
 
 @NgModule({

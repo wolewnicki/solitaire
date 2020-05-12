@@ -24,7 +24,7 @@ button{
   padding: 5px 10px;
 }
 .content table tbody tr:hover{
-    border: solid blue 
+    border: solid yellow 
 }
 .content table th {
     padding: 5px 10px;

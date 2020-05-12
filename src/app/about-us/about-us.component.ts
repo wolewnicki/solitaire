@@ -16,6 +16,11 @@ export class AboutUsComponent implements OnInit {
   date: Date = new Date();
   simpleDate: string;
 
+  clearSelected() {
+    this.selectedItem = null;
+    this.selectedItemName = null;
+  }
+
   changeBool() {
     this.buttonColor ? this.buttonColor = false : this.buttonColor = true;
   }
