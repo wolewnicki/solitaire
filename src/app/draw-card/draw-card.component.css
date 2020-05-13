@@ -34,3 +34,6 @@ button {
 .rounded { 
     border-radius: 10px;
 }
+.red-card {
+    color: red;
+}

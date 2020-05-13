@@ -1,6 +1,6 @@
 <button (click)="generateCard()" class="btn-dark">Draw a random Card!</button>
 
-<div class="outline rounded" *ngFor="let card of cards">
+<div [ngClass]="['outline', 'rounded']" [class.red-card]="card.color === 'red'" *ngFor="let card of cards">
     <div class="top">
         <span>{{card.rank}}</span>
         <span>{{card.suit}}</span>
