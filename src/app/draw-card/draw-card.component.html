@@ -1,13 +1,56 @@
 <button (click)="generateCard()" class="btn-dark">Draw a random Card!</button>
 
-<div [ngClass]="['outline', 'rounded']" [class.red-card]="card.color === 'red'" *ngFor="let card of cards">
-    <div class="top">
-        <span>{{card.rank}}</span>
-        <span>{{card.suit}}</span>
+<div class="example-container">
+    <h1> All Cards </h1>
+<div
+id="cards"
+cdkDropList
+[cdkDropListData]="cards"
+cdkDropListConnectedTo="red-only"
+(cdkDropListDropped)="drop($event)"
+[cdkDropListEnterPredicate]="returnPredicate"
+>
+  <div [ngClass]="['outline', 'example-list', 'rounded', card.isRed ? 'red-card' : '']" *ngFor="let card of cards"
+  [cdkDragData]="card"
+  cdkDrag>
+      <div class="top">
+          <span>{{card.rank}}</span>
+          <span>{{card.suit}}</span>
+      </div>
+      <h1>{{card.suit}}</h1>
+      <div class="bottom">
+          <span>{{card.suit}}</span>
+          <span>{{card.rank}}</span>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="example-container">
+    <h1> Red Only </h1>
+<div
+id="red-only"
+cdkDropList
+[cdkDropListData]="redCards"
+cdkDropListConnectedTo="cards"
+(cdkDropListDropped)="drop($event)"
+[cdkDropListEnterPredicate]="redPredicate"
+>
+    <div
+    [ngClass]="['example-list', 'outline', 'rounded', isRed ? 'red-card' : '']"
+    *ngFor="let card of redCards"
+    cdkDrag
+    [cdkDragData]="card"
+    >
+        <div class="top">
+          <span>{{card.rank}}</span>
+          <span>{{card.suit}}</span>
+        </div>
+        <h1>{{card.suit}}</h1>
+        <div class="bottom">
+          <span>{{card.suit}}</span>
+          <span>{{card.rank}}</span>
+        </div>
     </div>
-    <h1>{{card.suit}}</h1>
-    <div class="bottom">
-        <span>{{card.suit}}</span>
-        <span>{{card.rank}}</span>
-    </div>
+</div>
 </div>
