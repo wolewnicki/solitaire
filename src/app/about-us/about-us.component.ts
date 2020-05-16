@@ -21,6 +21,7 @@ export class AboutUsComponent implements OnInit {
     this.selectedItemName = null;
   }
 
+
   changeBool() {
     this.buttonColor ? this.buttonColor = false : this.buttonColor = true;
   }
