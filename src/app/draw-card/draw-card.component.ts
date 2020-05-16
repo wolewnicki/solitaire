@@ -22,7 +22,16 @@ export class DrawCardComponent implements OnInit {
   }
 
   redPredicate (card : CdkDrag<CardModel>) {
-    return card.data.isRed === true;
+    return card.data.isRed 
+  }
+  solitairePredicate (card : CdkDrag<CardModel>) {
+    const parentCard = this.redCards[0].rank
+    const childCard = card.data.rank
+    // if (card.data.isRed === this.redCards[0].isRed){
+    //   return false;
+    // } else {
+      return this.rankValues[parentCard] % this.rankValues[childCard] == 1
+    // }
   }
 
   drop(event: CdkDragDrop<any>) {
@@ -35,7 +44,10 @@ export class DrawCardComponent implements OnInit {
                         event.currentIndex);
     }
   }
-
+  
+  selectCard (card : CardModel) {
+    this.cards.findIndex(card)
+  }
 
   generateCard() {
     const suitIndex = Math.floor(Math.random() * this.suits.length)
@@ -54,8 +66,25 @@ export class DrawCardComponent implements OnInit {
   '♠' : false,
   '♣' : false
 }
+rankValues = {
+  'A'  : 1,
+  '2'  : 2,
+  '3'  : 3,
+  '4'  : 4,
+  '5'  : 5,
+  '6'  : 6,
+  '7'  : 7,
+  '8'  : 8,
+  '9'  : 9,
+  '10' : 10,
+  'J'  : 11,
+  'Q'  : 12,
+  'K'  : 13
+}
     cards: Array<CardModel> = [
-    { suit: '♥', rank: 'K', isRed: this.isRed['♥']},
+    { suit: '♥', rank: 'J', isRed: this.isRed['♥']},
+    { suit: '♠', rank: 'J', isRed: this.isRed['♠']},
+    { suit: '♦', rank: '9', isRed: this.isRed['♦']}
   ]
 
     redCards : Array<CardModel> = [
