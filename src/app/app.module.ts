@@ -10,6 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
+import { State } from './State/state';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     DragDropModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, State],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
