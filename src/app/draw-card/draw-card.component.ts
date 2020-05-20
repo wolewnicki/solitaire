@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { CardModel } from '../Models/card.model'
-import { State } from '../State/state'
+import { State } from '../State/card.state'
 
 @Component({
   selector: 'app-draw-card',
@@ -24,21 +24,23 @@ export class DrawCardComponent implements OnInit {
     this.state.selectedCard = card
     console.log(this.state)
   }
+  revealHiddenCard(list: Array<CardModel>){
+    list[0].hidden == false
+  }
 
   redPredicate (card : CdkDrag<CardModel>) {
     return card.data.isRed 
   }
-  solitairePredicate (card : CardModel) {
-    debugger
-    console.log(this.state.redCards)
-    const parentCard = this.state.redCards[0].rank
-    const childCard = card.rank
-    // if (card.data.isRed === this.redCards[0].isRed){
-    //   return false;
-    // } else {
-      return this.state.rankValues[parentCard] % this.state.rankValues[childCard] == 1
-    // }
+  solitairePredicate (card : CdkDrag<CardModel>) {
+    const parentCard = this.data[0]
+    const childCard = card.data
+    if (parentCard.isRed === childCard.isRed){
+      return false;
+    } else {
+      return parentCard.rankValue % childCard.rankValue == 1
+    }
   }
+
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container){
@@ -61,7 +63,8 @@ export class DrawCardComponent implements OnInit {
     const rankIndex = Math.floor(Math.random() * this.state.ranks.length)
     const randomSuit = this.state.suits[suitIndex] 
     const randomRank = this.state.ranks[rankIndex]
-    const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`, isRed: this.state.isRed[randomSuit]}
+    const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`,
+                               isRed: this.state.isRed[randomSuit], rankValue: this.state.rankValues[randomRank], hidden: true}
     this.state.cards.push(assembledListItem)
   }
 }

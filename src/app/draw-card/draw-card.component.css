@@ -54,3 +54,13 @@ button {
     overflow: hidden;
     display: block;
 }
+.hidden-card{
+    background-image: url("assets/cardback.gif");
+    border-color: #808080 #000000 #000000 #808080;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 20pt;
+    width: 3.75em;
+    height: 5.00em;
+    color: transparent;
+}
