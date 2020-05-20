@@ -7,21 +7,19 @@ import { State } from '../State/card.state'
 @Component({
   selector: 'app-draw-card',
   templateUrl: './draw-card.component.html',
-  styleUrls: ['./draw-card.component.css']
+  styleUrls: ['./draw-card.component.css'],
+  providers: [State]
 })
 export class DrawCardComponent implements OnInit {
-
-
-
 
   constructor(public state: State) { }
 
   ngOnInit(): void {
     console.log(this.state)
   }
-  selectCard(card : CardModel) {
-    this.state.selectedCard = card
-    console.log(this.state)
+  selectCard(card : CardModel, index) {
+    console.log(card)
+    console.log(index)
   }
   
   returnPredicate () {
