@@ -3,7 +3,6 @@ export interface CardModel {
     rank: string;
     isRed: boolean;
     rankValue: number;
-    hidden: boolean;
 }
 
 export interface CdkDrag<CardModel>{

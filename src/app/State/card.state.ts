@@ -26,7 +26,7 @@ export class State {
         'K'  : 13
     }
     cards: Array<CardModel> = [
-        { suit: '♥', rank: 'J', isRed: this.isRed['♥'], rankValue: this.rankValues['J'], hidden: true},
+        { suit: '♥', rank: 'J', isRed: this.isRed['♥'], rankValue: this.rankValues['J']},
         { suit: '♠', rank: 'J', isRed: this.isRed['♠'], rankValue: this.rankValues['J']},
         { suit: '♦', rank: '9', isRed: this.isRed['♦'], rankValue: this.rankValues['9']}
     ]
@@ -34,4 +34,8 @@ export class State {
         { suit: '♦', rank: 'Q', isRed: this.isRed['♦'], rankValue: this.rankValues['Q']},
         { suit: '♥', rank: '10', isRed: this.isRed['♥'], rankValue: this.rankValues['10']},
     ]
+
+    myFunct(){
+        return 'Foo' + 'Bar'
+    }
 }
