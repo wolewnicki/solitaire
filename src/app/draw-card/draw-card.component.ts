@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { CardModel } from '../Models/card.model'
+import { State } from '../State/card.state'
+
 
 @Component({
   selector: 'app-draw-card',
@@ -15,24 +17,34 @@ export class DrawCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.state)
   }
   
   returnPredicate () {
     return true;
   }
 
+  setSelectedCard(card : CardModel) {
+    this.state.selectedCard = card
+    console.log(this.state)
+  }
+  revealHiddenCard(list: Array<CardModel>){
+    list[0].hidden == false
+  }
+
   redPredicate (card : CdkDrag<CardModel>) {
     return card.data.isRed 
   }
   solitairePredicate (card : CdkDrag<CardModel>) {
-    const parentCard = this.redCards[0].rank
-    const childCard = card.data.rank
-    // if (card.data.isRed === this.redCards[0].isRed){
-    //   return false;
-    // } else {
-      return this.rankValues[parentCard] % this.rankValues[childCard] == 1
-    // }
+    const parentCard = this.data[0]
+    const childCard = card.data
+    if (parentCard.isRed === childCard.isRed){
+      return false;
+    } else {
+      return parentCard.rankValue % childCard.rankValue == 1
+    }
   }
+
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container){
@@ -50,46 +62,10 @@ export class DrawCardComponent implements OnInit {
   }
 
   generateCard() {
-    const suitIndex = Math.floor(Math.random() * this.suits.length)
-    const rankIndex = Math.floor(Math.random() * this.ranks.length)
-    const randomSuit = this.suits[suitIndex] 
-    const randomRank = this.ranks[rankIndex]
-    const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`, isRed: this.isRed[randomSuit]}
-    this.cards.push(assembledListItem)
-  }
-
-  suits: string[] = ['♥','♦','♠','♣']
-  ranks: any[] = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
-  isRed = {
-  '♥' : true,
-  '♦' : true,
-  '♠' : false,
-  '♣' : false
-}
-rankValues = {
-  'A'  : 1,
-  '2'  : 2,
-  '3'  : 3,
-  '4'  : 4,
-  '5'  : 5,
-  '6'  : 6,
-  '7'  : 7,
-  '8'  : 8,
-  '9'  : 9,
-  '10' : 10,
-  'J'  : 11,
-  'Q'  : 12,
-  'K'  : 13
-}
-    cards: Array<CardModel> = [
-    { suit: '♥', rank: 'J', isRed: this.isRed['♥']},
-    { suit: '♠', rank: 'J', isRed: this.isRed['♠']},
-    { suit: '♦', rank: '9', isRed: this.isRed['♦']}
-  ]
-
-    redCards : Array<CardModel> = [
-    { suit: '♦', rank: 'Q', isRed: this.isRed['♦']},
-    { suit: '♥', rank: '10', isRed: this.isRed['♥']},
-  ]
-
-}
+    const suitIndex = Math.floor(Math.random() * this.state.suits.length)
+    const rankIndex = Math.floor(Math.random() * this.state.ranks.length)
+    const randomSuit = this.state.suits[suitIndex] 
+    const randomRank = this.state.ranks[rankIndex]
+    const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`,
+                               isRed: this.state.isRed[randomSuit], rankValue: this.state.rankValues[randomRank], hidden: true}
+    this.state.cards.push(assembledListItem)

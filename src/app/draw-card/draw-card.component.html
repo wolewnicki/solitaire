@@ -8,11 +8,16 @@ cdkDropList
 [cdkDropListData]="cards"
 cdkDropListConnectedTo="red-only"
 (cdkDropListDropped)="drop($event)"
+(cdkDropListExited)="revealHiddenCard(state.cards)"
 [cdkDropListEnterPredicate]="returnPredicate"
 >
-  <div [ngClass]="['outline', 'example-list', 'rounded', card.isRed ? 'red-card' : '']" *ngFor="let card of cards"
-  [cdkDragData]="card"
-  cdkDrag>
+  <div [ngClass]="['outline', 'example-list', 'rounded', card.isRed ? 'red-card' : '', card.hidden ? 'hidden-card' : '']" 
+       *ngFor="let card of state.cards; let i = index"
+       (click)="selectCard(card, i)"
+       [cdkDragData]="card"
+       (cdkDragStarted)="setSelectedCard(card)"
+       cdkDrag
+       >
       <div class="top">
           <span>{{card.rank}}</span>
           <span>{{card.suit}}</span>
@@ -37,8 +42,8 @@ cdkDropListConnectedTo="cards"
 [cdkDropListEnterPredicate]="solitairePredicate"
 >
     <div
-    [ngClass]="['example-list', 'outline', 'rounded', isRed ? 'red-card' : '']"
-    *ngFor="let card of redCards"
+    [ngClass]="['example-list', 'outline', 'rounded', card.isRed ? 'red-card' : '']"
+    *ngFor="let card of state.redCards; let i = index"
     cdkDrag
     [cdkDragData]="card"
     >
