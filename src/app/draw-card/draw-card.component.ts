@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CardModel } from '../Models/card.model'
 import { State } from '../State/card.state'
 
@@ -20,27 +20,25 @@ export class DrawCardComponent implements OnInit {
     return true;
   }
 
+  solitairePredicate (childCard: CdkDrag<CardModel>, parentCard: CdkDropList<CardModel>) {
+    if (childCard.data.isRed === parentCard.data[0].isRed){
+      return false
+    } else {
+      return parentCard.data[0].rankValue % childCard.data.rankValue == 1
+    }
+  }
+
   setSelectedCard(card : CardModel) {
     this.state.selectedCard = card
     console.log(this.state)
   }
-  revealHiddenCard(list: Array<CardModel>){
-    list[0].hidden == false
-  }
+  // revealHiddenCard(list: Array<CardModel>){
+  //   list[0].hidden == false
+  // }
 
   redPredicate (card : CdkDrag<CardModel>) {
     return card.data.isRed 
   }
-  solitairePredicate (card : CdkDrag<CardModel>) {
-    const parentCard = this.data[0]
-    const childCard = card.data
-    if (parentCard.isRed === childCard.isRed){
-      return false;
-    } else {
-      return parentCard.rankValue % childCard.rankValue == 1
-    }
-  }
-
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container){

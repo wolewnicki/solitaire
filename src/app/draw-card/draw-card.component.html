@@ -8,10 +8,9 @@ cdkDropList
 [cdkDropListData]="state.cards"
 cdkDropListConnectedTo="red-only"
 (cdkDropListDropped)="drop($event)"
-(cdkDropListExited)="revealHiddenCard(state.cards)"
 [cdkDropListEnterPredicate]="returnPredicate"
 >
-  <div [ngClass]="['outline', 'example-list', 'rounded', card.isRed ? 'red-card' : '', card.hidden ? 'hidden-card' : '']" 
+  <div [ngClass]="['outline', 'example-list', 'rounded', card.isRed ? 'red-card' : '']" 
        *ngFor="let card of state.cards; let i = index"
        (click)="selectCard(card, i)"
        [cdkDragData]="card"
