@@ -3,14 +3,18 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angul
 import { CardModel } from '../Models/card.model'
 import { State } from '../State/card.state'
 
+
 @Component({
   selector: 'app-draw-card',
   templateUrl: './draw-card.component.html',
-  styleUrls: ['./draw-card.component.css'],
-  providers: [State]
+  styleUrls: ['./draw-card.component.css']
 })
 export class DrawCardComponent implements OnInit {
-  constructor(public state: State) { }
+
+
+
+
+  constructor() { }
 
   ngOnInit(): void {
     console.log(this.state)
@@ -53,9 +57,8 @@ export class DrawCardComponent implements OnInit {
     }
   }
   
-  selectCard (card : CardModel, index: number) {
-    console.log(card)
-    console.log(index)
+  selectCard (card : CardModel) {
+    this.cards.findIndex(card)
   }
 
   generateCard() {
@@ -66,5 +69,3 @@ export class DrawCardComponent implements OnInit {
     const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`,
                                isRed: this.state.isRed[randomSuit], rankValue: this.state.rankValues[randomRank], hidden: true}
     this.state.cards.push(assembledListItem)
-  }
-}

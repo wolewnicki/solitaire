@@ -12,6 +12,7 @@ import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
 import { State } from './State/card.state';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { State } from './State/card.state';
     BrowserAnimationsModule,
     DragDropModule
   ],
-  providers: [DatePipe, State],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

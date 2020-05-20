@@ -5,7 +5,7 @@
 <div
 id="cards"
 cdkDropList
-[cdkDropListData]="state.cards"
+[cdkDropListData]="cards"
 cdkDropListConnectedTo="red-only"
 (cdkDropListDropped)="drop($event)"
 (cdkDropListExited)="revealHiddenCard(state.cards)"
@@ -22,9 +22,7 @@ cdkDropListConnectedTo="red-only"
           <span>{{card.rank}}</span>
           <span>{{card.suit}}</span>
       </div>
-
       <h1>{{card.suit}}</h1>
-
       <div class="bottom">
           <span>{{card.suit}}</span>
           <span>{{card.rank}}</span>
@@ -38,7 +36,7 @@ cdkDropListConnectedTo="red-only"
 <div
 id="red-only"
 cdkDropList
-[cdkDropListData]="state.redCards"
+[cdkDropListData]="redCards"
 cdkDropListConnectedTo="cards"
 (cdkDropListDropped)="drop($event)"
 [cdkDropListEnterPredicate]="solitairePredicate"
@@ -48,7 +46,7 @@ cdkDropListConnectedTo="cards"
     *ngFor="let card of state.redCards; let i = index"
     cdkDrag
     [cdkDragData]="card"
-    (click)="selectCard(card, i)">
+    >
         <div class="top">
           <span>{{card.rank}}</span>
           <span>{{card.suit}}</span>
