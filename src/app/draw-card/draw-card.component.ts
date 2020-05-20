@@ -14,9 +14,13 @@ export class DrawCardComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(public state: State) { }
 
   ngOnInit(): void {
+    console.log(this.state)
+  }
+  selectCard(card : CardModel) {
+    this.state.selectedCard = card
     console.log(this.state)
   }
   
@@ -55,9 +59,6 @@ export class DrawCardComponent implements OnInit {
     }
   }
   
-  selectCard (card : CardModel) {
-    this.cards.findIndex(card)
-  }
 
   generateCard() {
     const suitIndex = Math.floor(Math.random() * this.state.suits.length)
@@ -67,3 +68,5 @@ export class DrawCardComponent implements OnInit {
     const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`,
                                isRed: this.state.isRed[randomSuit], rankValue: this.state.rankValues[randomRank], hidden: true}
     this.state.cards.push(assembledListItem)
+  }
+}

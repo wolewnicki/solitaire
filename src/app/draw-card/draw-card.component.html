@@ -5,7 +5,7 @@
 <div
 id="cards"
 cdkDropList
-[cdkDropListData]="cards"
+[cdkDropListData]="state.cards"
 cdkDropListConnectedTo="red-only"
 (cdkDropListDropped)="drop($event)"
 [cdkDropListEnterPredicate]="returnPredicate"
@@ -35,7 +35,7 @@ cdkDropListConnectedTo="red-only"
 <div
 id="red-only"
 cdkDropList
-[cdkDropListData]="redCards"
+[cdkDropListData]="state.redCards"
 cdkDropListConnectedTo="cards"
 (cdkDropListDropped)="drop($event)"
 [cdkDropListEnterPredicate]="solitairePredicate"
