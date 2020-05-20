@@ -39,7 +39,7 @@ cdkDropList
 [cdkDropListData]="state.redCards"
 cdkDropListConnectedTo="cards"
 (cdkDropListDropped)="drop($event)"
-[cdkDropListEnterPredicate]="solitairePredicate(state.selectedCard)"
+[cdkDropListEnterPredicate]="redPredicate"
 >
     <div
     [ngClass]="['example-list', 'outline', 'rounded', state.isRed ? 'red-card' : '']"

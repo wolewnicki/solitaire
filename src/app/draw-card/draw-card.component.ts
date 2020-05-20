@@ -14,7 +14,6 @@ export class DrawCardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.state)
-    debugger;
   }
   
   returnPredicate () {
