@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CardModel } from '../Models/card.model'
 import { State } from '../State/card.state'
+import { Suits, Ranks, IsRed, RankValues} from '../app.constants'
 
 
 @Component({
@@ -17,16 +18,22 @@ export class DrawCardComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.state)
   }
-  selectCard(card : CardModel, index) {
+
+  suits = Suits
+  ranks = Ranks
+  isRed = IsRed
+  rankValues = RankValues
+
+  selectCard(card : CardModel, index : Array<CardModel>): void {
     console.log(card)
     console.log(index)
   }
   
-  returnPredicate () {
+  returnPredicate (): boolean {
     return true;
   }
 
-  solitairePredicate (childCard: CdkDrag<CardModel>, parentCard: CdkDropList<CardModel>) {
+  solitairePredicate (childCard: CdkDrag<CardModel>, parentCard: CdkDropList<CardModel>): boolean {
     if (childCard.data.isRed === parentCard.data[0].isRed){
       return false
     } else {
@@ -34,7 +41,7 @@ export class DrawCardComponent implements OnInit {
     }
   }
 
-  setSelectedCard(card : CardModel) {
+  setSelectedCard(card : CardModel): void {
     this.state.selectedCard = card
     console.log(this.state)
   }
@@ -46,7 +53,7 @@ export class DrawCardComponent implements OnInit {
     return card.data.isRed 
   }
 
-  drop(event: CdkDragDrop<any>) {
+  drop(event: CdkDragDrop<any>): void {
     if (event.previousContainer === event.container){
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -58,13 +65,13 @@ export class DrawCardComponent implements OnInit {
   }
   
 
-  generateCard() {
-    const suitIndex = Math.floor(Math.random() * this.state.suits.length)
-    const rankIndex = Math.floor(Math.random() * this.state.ranks.length)
-    const randomSuit = this.state.suits[suitIndex] 
-    const randomRank = this.state.ranks[rankIndex]
+  generateCard(): void {
+    const suitIndex = Math.floor(Math.random() * this.suits.length)
+    const rankIndex = Math.floor(Math.random() * this.ranks.length)
+    const randomSuit = this.suits[suitIndex] 
+    const randomRank = this.ranks[rankIndex]
     const assembledListItem = {suit: `${randomSuit}`, rank: `${randomRank}`,
-                               isRed: this.state.isRed[randomSuit], rankValue: this.state.rankValues[randomRank], hidden: true}
+                               isRed: this.isRed[randomSuit], rankValue: this.rankValues[randomRank], hidden: true}
     this.state.cards.push(assembledListItem)
   }
 }
