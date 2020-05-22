@@ -11,6 +11,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
 import { State } from './State/card.state';
+import { StartGameComponent } from './start-game/start-game.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { State } from './State/card.state';
     NavBarComponent,
     AboutUsComponent,
     DrawCardComponent,
+    StartGameComponent,
   ],
   imports: [
     BrowserModule,
