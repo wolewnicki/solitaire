@@ -1,7 +1,6 @@
 import { CardModel } from '../Models/card.model';
 import { IsRed, RankValues } from '../app.constants';
 
-
 export class State {
     isRed = IsRed
     rankValues = RankValues

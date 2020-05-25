@@ -12,6 +12,8 @@ import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
 import { State } from './State/card.state';
 import { StartGameComponent } from './start-game/start-game.component';
+import { NgxsModule } from '@ngxs/store'
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -27,9 +29,10 @@ import { StartGameComponent } from './start-game/start-game.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    NgxsModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, State],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
