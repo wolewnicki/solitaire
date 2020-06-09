@@ -10,7 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
-import { State } from './State/card.state';
+import { CardState } from './State/card.state';
 import { StartGameComponent } from './start-game/start-game.component';
 import { NgxsModule } from '@ngxs/store'
 import { environment } from 'src/environments/environment';
@@ -30,9 +30,9 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    NgxsModule
+    // NgxsModule.forRoot([CardState]),
   ],
-  providers: [DatePipe, State],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,10 +27,6 @@ span {
     text-align: left; 
     transform: rotate(180deg);
 }
-button {
-    position: relative;
-    top: 10rem;
-}
 .rounded { 
     border-radius: 10px;
 }

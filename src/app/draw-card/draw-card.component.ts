@@ -1,22 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CardModel } from '../Models/card.model'
-import { State } from '../State/card.state'
+import { CardState, CardStateModel } from '../State/card.state'
 import { Suits, Ranks, IsRed, RankValues} from '../app.constants'
+import { Store, Select } from '@ngxs/store'
+import { Observable } from 'rxjs'
+import { UpdateFoundation } from '../Actions/card.actions'
 
 
 @Component({
   selector: 'app-draw-card',
   templateUrl: './draw-card.component.html',
   styleUrls: ['./draw-card.component.css'],
-  providers: [State]
+  providers: [CardState]
 })
 export class DrawCardComponent implements OnInit {
+  @Select(CardState.getCardState) cardStateObservable: Observable<CardStateModel>
+  
+  cardState : CardStateModel
 
-  constructor(public state: State) { }
+  constructor(
+    public state: CardState,
+    private store: Store
+    ) { }
 
   ngOnInit(): void {
     console.log(this.state)
+    this.cardStateObservable.subscribe(x => this.cardState = x)
   }
 
   suits = Suits
