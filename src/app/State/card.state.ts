@@ -1,7 +1,38 @@
-import { CardModel } from '../Models/card.model';
+import { CardModel, TableauModel, FoundationModel, WasteModel } from '../Models/card.model';
 import { IsRed, RankValues } from '../app.constants';
+import { State, Selector, Action, StateContext } from '@ngxs/store'
+import { UpdateFoundation } from '../Actions/card.actions';
 
-export class State {
+export class CardStateModel {
+    tableau : Array<CardModel> 
+    foundation: Array<CardModel>
+    waste: Array<CardModel> 
+}
+
+@State<CardStateModel>({
+    name: 'card',
+    defaults: {
+        tableau: [],
+        foundation: [],
+        waste: [], 
+    }
+})
+
+export class CardState {
+    @Selector()
+    static getCardState(state: CardStateModel){
+        return state
+    }
+
+    @Action(UpdateFoundation)
+    updateFoundation({getState, patchState}: StateContext<CardStateModel>, {payload}: UpdateFoundation) {
+        const state = getState()
+        patchState({
+            foundation: [...state.foundation, payload]
+        })
+    }
+
+
     isRed = IsRed
     rankValues = RankValues
 
@@ -16,6 +47,5 @@ export class State {
         { suit: '♦', rank: 'Q', isRed: this.isRed['♦'], rankValue: this.rankValues['Q']},
         { suit: '♥', rank: '10', isRed: this.isRed['♥'], rankValue: this.rankValues['10']},
     ]
-    deck : Array<CardModel> = []
 
 }

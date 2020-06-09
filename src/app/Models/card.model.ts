@@ -1,10 +1,16 @@
-export interface CardModel {
+export class CardModel {
     suit: string;
     rank: string;
     isRed: boolean;
     rankValue: number;
 }
 
-export interface CdkDrag<CardModel>{
-    isRed: boolean;
+export class TableauModel {
+    cards: Array<CardModel> 
+}
+export class FoundationModel {
+    card : CardModel
+}
+export class WasteModel {
+    cards: Array<CardModel>
 }

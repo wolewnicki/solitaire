@@ -1,4 +1,5 @@
 <button (click)="generateCard()" class="btn-dark">Draw a random Card!</button>
+<button>My Other Button</button>
 
 <div class="example-container">
     <h1> All Cards </h1>
@@ -35,14 +36,14 @@ cdkDropListConnectedTo="red-only"
 <div
 id="red-only"
 cdkDropList
-[cdkDropListData]="state.redCards"
+[cdkDropListData]="cardState.foundation"
 cdkDropListConnectedTo="cards"
 (cdkDropListDropped)="drop($event)"
 [cdkDropListEnterPredicate]="solitairePredicate"
 >
     <div
     [ngClass]="['example-list', 'outline', 'rounded', card.isRed ? 'red-card' : '']"
-    *ngFor="let card of state.redCards; let i = index"
+    *ngFor="let card of cardState.foundation; let i = index"
     cdkDrag
     [cdkDragData]="card"
     >
