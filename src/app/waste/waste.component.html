@@ -1,0 +1,8 @@
+
+<app-start-game></app-start-game>
+
+<div class="hidden-card" (click)="showCard()"></div>
+
+<div *ngIf="selectedCard">
+    <app-card [drawnCard]="selectedCard"></app-card>
+</div>

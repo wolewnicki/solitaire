@@ -1,0 +1,16 @@
+
+<div [ngClass]="['outline', 'example-list', 'rounded', drawnCard.isRed ? 'red-card' : '']" 
+[cdkDragData]="drawnCard"
+cdkDrag
+(click)="showData()"
+>
+<div class="top">
+   <span>{{drawnCard.rank}}</span>
+   <span>{{drawnCard.suit}}</span>
+</div>
+<h1>{{drawnCard.suit}}</h1>
+<div class="bottom">
+   <span>{{drawnCard.suit}}</span>
+   <span>{{drawnCard.rank}}</span>
+</div>
+</div>
