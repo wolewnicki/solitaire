@@ -74,6 +74,9 @@ export class DrawCardComponent implements OnInit {
     }
   }
   
+  tellState(): void {
+    console.log(this.cardState.foundation)
+  }
 
   generateCard(): void {
     const suitIndex = Math.floor(Math.random() * this.suits.length)

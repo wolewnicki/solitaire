@@ -1,5 +1,5 @@
 <button (click)="generateCard()" class="btn-dark">Draw a random Card!</button>
-<button>My Other Button</button>
+<button (click)="tellState()">My Other Button</button>
 
 <div class="example-container">
     <h1> All Cards </h1>
@@ -58,4 +58,11 @@ cdkDropListConnectedTo="cards"
         </div>
     </div>
 </div>
+</div>
+
+<div class="example-container">
+  <h1>Drawing cards because</h1>
+  <div *ngFor="let card of state.cards">
+      <app-card [drawnCard]="card"></app-card>
+  </div>
 </div>

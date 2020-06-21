@@ -1,3 +1,16 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.hidden-card{
+    background-image: url("assets/cardback.gif");
+    border-color: #808080 #000000 #000000 #808080;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 20pt;
+    width: 3.75em;
+    height: 5.00em;
+    color: transparent;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}

@@ -11,9 +11,11 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { DrawCardComponent } from './draw-card/draw-card.component';
 import { DatePipe } from '@angular/common';
 import { CardState } from './State/card.state';
-import { StartGameComponent } from './start-game/start-game.component';
 import { NgxsModule } from '@ngxs/store'
 import { environment } from 'src/environments/environment';
+import { WasteComponent } from './waste/waste.component';
+import { CardComponent } from './card/card.component';
+import { StartGameComponent } from './start-game/start-game.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { environment } from 'src/environments/environment';
     NavBarComponent,
     AboutUsComponent,
     DrawCardComponent,
+    WasteComponent,
+    CardComponent,
     StartGameComponent,
   ],
   imports: [
@@ -30,7 +34,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    // NgxsModule.forRoot([CardState]),
+    NgxsModule.forRoot([CardState]),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

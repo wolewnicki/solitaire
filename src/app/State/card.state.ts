@@ -1,7 +1,8 @@
 import { CardModel, TableauModel, FoundationModel, WasteModel } from '../Models/card.model';
 import { IsRed, RankValues } from '../app.constants';
 import { State, Selector, Action, StateContext } from '@ngxs/store'
-import { UpdateFoundation } from '../Actions/card.actions';
+import { UpdateFoundation, AddWaste } from '../Actions/card.actions';
+import { Injectable } from '@angular/core';
 
 export class CardStateModel {
     tableau : Array<CardModel> 
@@ -18,6 +19,7 @@ export class CardStateModel {
     }
 })
 
+@Injectable()
 export class CardState {
     @Selector()
     static getCardState(state: CardStateModel){
@@ -29,6 +31,13 @@ export class CardState {
         const state = getState()
         patchState({
             foundation: [...state.foundation, payload]
+        })
+    }
+    @Action(AddWaste)
+    addWaste({getState, patchState}: StateContext<CardStateModel>, {payload}: AddWaste){
+        const state = getState()
+        patchState({
+            waste: [...state.waste, payload]
         })
     }
 
