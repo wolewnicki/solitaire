@@ -1,11 +1,12 @@
 import { CardModel, TableauModel, FoundationModel, WasteModel } from '../Models/card.model';
 import { IsRed, RankValues } from '../app.constants';
 import { State, Selector, Action, StateContext } from '@ngxs/store'
-import { UpdateFoundation, AddWaste } from '../Actions/card.actions';
+import { UpdateFoundation, AddWaste, AddTableau } from '../Actions/card.actions';
 import { Injectable } from '@angular/core';
+import { Produce } from 'imm'
 
 export class CardStateModel {
-    tableau : Array<CardModel> 
+    tableau : TableauModel 
     foundation: Array<CardModel>
     waste: Array<CardModel> 
 }
@@ -13,7 +14,9 @@ export class CardStateModel {
 @State<CardStateModel>({
     name: 'card',
     defaults: {
-        tableau: [],
+        tableau: {
+            piles: [[], [], [], [], [], [], []]
+        },
         foundation: [],
         waste: [], 
     }
@@ -40,8 +43,15 @@ export class CardState {
             waste: [...state.waste, payload]
         })
     }
-
-
+    @Action(AddTableau)
+    addTableau({getState, patchState}: StateContext<CardStateModel>, {payload}: AddTableau){
+        const state = getState()
+        patchState({
+            tableau: {
+                piles: [...state.tableau.piles[i], payload] 
+            }
+        })
+    }
     isRed = IsRed
     rankValues = RankValues
 

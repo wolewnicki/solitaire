@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { WasteComponent } from './waste/waste.component';
 import { CardComponent } from './card/card.component';
 import { StartGameComponent } from './start-game/start-game.component';
+import { TableauComponent } from './tableau/tableau.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { StartGameComponent } from './start-game/start-game.component';
     WasteComponent,
     CardComponent,
     StartGameComponent,
+    TableauComponent,
   ],
   imports: [
     BrowserModule,
