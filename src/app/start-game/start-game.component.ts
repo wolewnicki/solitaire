@@ -4,7 +4,7 @@ import { Store, Select } from '@ngxs/store';
 import { CardState, CardStateModel } from '../State/card.state';
 import { Observable } from 'rxjs';
 import { CardModel } from '../Models/card.model';
-import { AddWaste } from '../Actions/card.actions'
+import { AddWaste, AddTableau } from '../Actions/card.actions'
 
 @Component({
   selector: 'app-start-game',
@@ -44,6 +44,23 @@ export class StartGameComponent implements OnInit {
     }
 
     return deck
+  }
+
+  createTableu(deck : Array<CardModel>, numOfLists: number){
+    let i = 0
+    let j = 1
+    let numOfCardsToAdd: number = 1
+
+    while(i < numOfLists) {
+      deck.forEach(card => {
+        while(j < numOfCardsToAdd){
+          this.store.dispatch(new AddTableau(card, i))
+          j++
+        }
+      })
+
+      i++
+    }
   }
 
   startGame(){

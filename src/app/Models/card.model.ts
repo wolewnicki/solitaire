@@ -6,7 +6,7 @@ export class CardModel {
 }
 
 export class TableauModel {
-    cards: Array<CardModel> 
+    piles : Array<CardModel[]>
 }
 export class FoundationModel {
     card : CardModel
