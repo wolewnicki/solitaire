@@ -12,5 +12,5 @@ export class AddWaste {
 
 export class AddTableau {
     static type = 'ADD_TABLEAU'
-    constructor(public payload: CardModel) {}
+    constructor(public payload: CardModel, public xAxis: number) {}
 }

@@ -19,4 +19,8 @@ export class TableauComponent implements OnInit {
     this.cardStateObservable.subscribe(x => this.cardState = x)
   }
 
+  checkState(){
+    console.log(this.cardState)
+  }
+
 }
