@@ -3,7 +3,6 @@ import { IsRed, RankValues } from '../app.constants';
 import { State, Selector, Action, StateContext } from '@ngxs/store'
 import { UpdateFoundation, AddWaste, AddTableau } from '../Actions/card.actions';
 import { Injectable } from '@angular/core';
-import { Produce } from 'imm'
 
 export class CardStateModel {
     tableau : TableauModel 
@@ -44,11 +43,11 @@ export class CardState {
         })
     }
     @Action(AddTableau)
-    addTableau({getState, patchState}: StateContext<CardStateModel>, {payload}: AddTableau){
+    addTableau({getState, patchState}: StateContext<CardStateModel>, {payload}: AddTableau, {xAxis}: AddTableau){
         const state = getState()
         patchState({
             tableau: {
-                piles: [...state.tableau.piles[i], payload] 
+                piles: [[...state.tableau.piles[xAxis], payload]]
             }
         })
     }

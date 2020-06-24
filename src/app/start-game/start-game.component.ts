@@ -5,6 +5,7 @@ import { CardState, CardStateModel } from '../State/card.state';
 import { Observable } from 'rxjs';
 import { CardModel } from '../Models/card.model';
 import { AddWaste, AddTableau } from '../Actions/card.actions'
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-start-game',
@@ -48,7 +49,7 @@ export class StartGameComponent implements OnInit {
 
   createTableu(deck : Array<CardModel>, numOfLists: number){
     let i = 0
-    let j = 1
+    let j = 0 
     let numOfCardsToAdd: number = 1
 
     while(i < numOfLists) {
@@ -60,6 +61,7 @@ export class StartGameComponent implements OnInit {
       })
 
       i++
+      numOfCardsToAdd++
     }
   }
 
@@ -72,10 +74,11 @@ export class StartGameComponent implements OnInit {
     })
 
     this.shuffle(deck)
+    this.createTableu(deck, 7)
 
-    deck.forEach(card => {
-      this.store.dispatch(new AddWaste(card))
-    })
+    // deck.forEach(card => {
+    //   this.store.dispatch(new AddWaste(card))
+    // })
   }
   
 }
