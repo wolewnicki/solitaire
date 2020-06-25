@@ -42,12 +42,17 @@ export class CardState {
             waste: [...state.waste, payload]
         })
     }
+
     @Action(AddTableau)
-    addTableau({getState, patchState}: StateContext<CardStateModel>, {payload}: AddTableau, {xAxis}: AddTableau){
+    addTableau({getState, patchState}: StateContext<CardStateModel>, {payload, xAxis}: AddTableau){
         const state = getState()
         patchState({
             tableau: {
-                piles: [[...state.tableau.piles[xAxis], payload]]
+                piles: state.tableau.piles.map((pile, index) => {
+                    if (index !== xAxis) return pile
+
+                    return [...pile, payload]
+                })
             }
         })
     }

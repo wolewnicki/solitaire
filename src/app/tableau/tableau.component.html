@@ -3,6 +3,6 @@
 
 <div *ngFor="let pile of cardState.tableau.piles">
     <div *ngFor="let card of pile">
-        <app-card></app-card>
+        <app-card [drawnCard]="card"></app-card>
     </div>
 </div>
