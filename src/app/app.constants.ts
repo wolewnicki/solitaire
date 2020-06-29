@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
 
 export const Suits: string[] = ['♥','♦','♠','♣'] 
 
@@ -24,4 +25,14 @@ export const RankValues: { [key: string] : number } = {
         'J'  : 11,
         'Q'  : 12,
         'K'  : 13
+}
+export function Drop(event: CdkDragDrop<any>): void {
+    if (event.previousContainer === event.container){
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
 }
