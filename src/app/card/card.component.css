@@ -13,7 +13,8 @@ span {
     position: relative;
     top: 10rem;
     width: 110px; 
-    border: 2px solid black; 
+    border: 2px solid white; 
+    border-radius: 4px;
     text-align: center; 
     padding: 10px; 
     margin: 10px; 
@@ -34,7 +35,6 @@ span {
     color: red;
 }
 .example-container {
-    position: relative;
     top: 200px;
     width: 400px;
     max-width: 100%;
@@ -42,14 +42,6 @@ span {
     display: inline-block;
     vertical-align: top;
   }
-.example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-}
 .cdk-drag-placeholder {
     opacity: 0.5;
     width: 5rem;

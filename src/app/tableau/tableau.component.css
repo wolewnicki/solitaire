@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+.col-item {
+    display: flex;
+    flex-direction: column;
+}
+.cdk-drag-placeholder {
+    opacity: 0.5;
+}
+.example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}

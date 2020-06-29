@@ -1,8 +1,15 @@
 <app-start-game></app-start-game>
 <button (click)="checkState()">Check State</button>
 
-<div *ngFor="let pile of cardState.tableau.piles">
-    <div *ngFor="let card of pile">
-        <app-card [drawnCard]="card"></app-card>
+<div class="container"
+cdkDropListGroup>
+    <div class="col-item example-list" *ngFor="let pile of cardState.tableau.piles"
+    cdkDropList
+    [cdkDropListData]="pile"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListEnterPredicate]="returnPredicate">
+        <div *ngFor="let card of pile">
+            <app-card [drawnCard]="card"></app-card>
+        </div>
     </div>
 </div>
