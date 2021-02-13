@@ -7,9 +7,6 @@
     display: flex;
     flex-direction: column;
 }
-.cdk-drag-placeholder {
-    opacity: 0.5;
-}
 .example-list {
   border: solid 1px #ccc;
   min-height: 60px;
@@ -17,4 +14,16 @@
   border-radius: 4px;
   overflow: hidden;
   display: block;
+}
+.placeholder {
+    position: relative;
+    top: 10rem;
+    height: 160px;
+    width: 110px; 
+    border: 2px solid black; 
+    border-radius: 4px;
+    text-align: center; 
+    padding: 10px; 
+    margin: 10px; 
+    background: #FFF; 
 }

@@ -62,6 +62,7 @@ export class StartGameComponent implements OnInit {
 
     this.cardState.tableau.piles.map((p, pileIndex) => {
       const cardsToAdd = this.drawCards(deck, numOfCardsToAdd)
+      cardsToAdd[numOfCardsToAdd - 1].hidden = false
       cardsToAdd.forEach(card => {
         this.store.dispatch(new AddTableau(card, pileIndex))
       })   
@@ -73,7 +74,7 @@ export class StartGameComponent implements OnInit {
     let deck: CardModel[] = []
     this.ranks.forEach(rank => {
       this.suits.forEach(suit => {
-        deck.push({suit: `${suit}`, rank: `${rank}`, isRed : this.isRed[suit], rankValue: this.rankValues[rank]})
+        deck.push({suit: `${suit}`, rank: `${rank}`, isRed : this.isRed[suit], rankValue: this.rankValues[rank], hidden: false})
       })
     })
 

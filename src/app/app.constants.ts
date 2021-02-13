@@ -1,4 +1,6 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop'
+import { CardModel } from './Models/card.model'
+import { CardComponent } from './card/card.component'
 
 export const Suits: string[] = ['♥','♦','♠','♣'] 
 

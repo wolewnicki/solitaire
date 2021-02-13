@@ -6,6 +6,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { DrawCardComponent } from './draw-card/draw-card.component';
 import { WasteComponent } from './waste/waste.component';
 import { TableauComponent } from './tableau/tableau.component';
+import { FoundationComponent } from './foundation/foundation.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'draw-card', component: DrawCardComponent},
   { path: 'waste', component: WasteComponent},
-  { path: 'tableau', component: TableauComponent}
+  { path: 'tableau', component: TableauComponent},
+  { path: 'foundation', component: FoundationComponent}
 ];
 
 @NgModule({

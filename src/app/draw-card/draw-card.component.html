@@ -42,7 +42,7 @@ cdkDropListConnectedTo="cards"
 [cdkDropListEnterPredicate]="solitairePredicate"
 >
     <div
-    [ngClass]="['example-list', 'outline', 'rounded', card.isRed ? 'red-card' : '']"
+    class="hidden-card"
     *ngFor="let card of cardState.foundation; let i = index"
     cdkDrag
     [cdkDragData]="card"
@@ -66,3 +66,5 @@ cdkDropListConnectedTo="cards"
       <app-card [drawnCard]="card"></app-card>
   </div>
 </div>
+
+    <!-- [ngClass]="['example-list', 'outline', 'rounded', card.isRed ? 'red-card' : '']" -->

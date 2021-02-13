@@ -17,6 +17,7 @@ import { WasteComponent } from './waste/waste.component';
 import { CardComponent } from './card/card.component';
 import { StartGameComponent } from './start-game/start-game.component';
 import { TableauComponent } from './tableau/tableau.component';
+import { FoundationComponent } from './foundation/foundation.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { TableauComponent } from './tableau/tableau.component';
     CardComponent,
     StartGameComponent,
     TableauComponent,
+    FoundationComponent,
   ],
   imports: [
     BrowserModule,
