@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class CardStateModel {
     tableau : TableauModel 
-    foundation: Array<CardModel>
+    foundation: FoundationModel
     waste: Array<CardModel> 
 }
 
@@ -14,9 +14,11 @@ export class CardStateModel {
     name: 'card',
     defaults: {
         tableau: {
-            piles: [[], [], [], [], [], [], []]
+            piles: [ [], [], [], [], [], [], [] ]
         },
-        foundation: [],
+        foundation: {
+            piles: [ [], [], [], [] ]
+        },
         waste: [], 
     }
 })
@@ -28,13 +30,6 @@ export class CardState {
         return state
     }
 
-    @Action(UpdateFoundation)
-    updateFoundation({getState, patchState}: StateContext<CardStateModel>, {payload}: UpdateFoundation) {
-        const state = getState()
-        patchState({
-            foundation: [...state.foundation, payload]
-        })
-    }
     @Action(AddWaste)
     addWaste({getState, patchState}: StateContext<CardStateModel>, {payload}: AddWaste){
         const state = getState()
@@ -62,13 +57,13 @@ export class CardState {
     selectedCard: CardModel
 
     cards: Array<CardModel> = [
-        { suit: '♥', rank: 'J', isRed: this.isRed['♥'], rankValue: this.rankValues['J']},
-        { suit: '♠', rank: 'J', isRed: this.isRed['♠'], rankValue: this.rankValues['J']},
-        { suit: '♦', rank: '9', isRed: this.isRed['♦'], rankValue: this.rankValues['9']}
+        { suit: '♥', rank: 'J', isRed: this.isRed['♥'], rankValue: this.rankValues['J'], hidden: false},
+        { suit: '♠', rank: 'J', isRed: this.isRed['♠'], rankValue: this.rankValues['J'], hidden: false},
+        { suit: '♦', rank: '9', isRed: this.isRed['♦'], rankValue: this.rankValues['9'], hidden: false}
     ]
     redCards : Array<CardModel> = [
-        { suit: '♦', rank: 'Q', isRed: this.isRed['♦'], rankValue: this.rankValues['Q']},
-        { suit: '♥', rank: '10', isRed: this.isRed['♥'], rankValue: this.rankValues['10']},
+        { suit: '♦', rank: 'Q', isRed: this.isRed['♦'], rankValue: this.rankValues['Q'], hidden: false},
+        { suit: '♥', rank: '10', isRed: this.isRed['♥'], rankValue: this.rankValues['10'], hidden: false},
     ]
 
 }

@@ -3,11 +3,21 @@
 
 <div class="container"
 cdkDropListGroup>
-    <div class="col-item example-list" *ngFor="let pile of cardState.tableau.piles"
+    <div class="col-item" *ngFor="let pile of cardState.tableau.piles"
     cdkDropList
     [cdkDropListData]="pile"
     (cdkDropListDropped)="drop($event)"
     [cdkDropListEnterPredicate]="returnPredicate">
+        <div *ngFor="let card of pile">
+            <app-card [drawnCard]="card"></app-card>
+        </div>
+    </div>
+
+    <div class="placeholder" *ngFor="let pile of cardState.foundation.piles; let xCoord = index"
+    cdkDropList
+    [cdkDropListData]="pile"
+    [cdkDropListEnterPredicate]="foundationPredicate"
+    (cdkDropListDropped)="drop($event)">
         <div *ngFor="let card of pile">
             <app-card [drawnCard]="card"></app-card>
         </div>
