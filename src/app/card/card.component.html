@@ -1,5 +1,5 @@
 
-<div *ngIf="!drawnCard.hidden" [ngClass]="['outline', 'rounded', drawnCard.isRed ? 'red-card' : '']" 
+<div *ngIf="!drawnCard.hidden" [ngClass]="['outline', drawnCard.isRed ? 'red-card' : '']" 
 [cdkDragData]="drawnCard"
 cdkDrag
 (click)="showData()"

@@ -6,6 +6,7 @@
 .col-item {
     display: flex;
     flex-direction: column;
+    width: 120px;
 }
 .example-list {
   border: solid 1px #ccc;
@@ -26,4 +27,13 @@
     padding: 10px; 
     margin: 10px; 
     background: #FFF; 
+}
+.ghost-card {
+   position: absolute;
+   top: 227px;
+   padding: 10px;
+   margin: 10px;
+   height: 152px;
+   width: 110px; 
+   border: 1px solid black;
 }
