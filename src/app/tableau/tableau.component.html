@@ -2,18 +2,21 @@
 <button (click)="checkState()">Check State</button>
 
 <div class="container"
-cdkDropListGroup>
+     cdkDropListGroup>
+
     <div class="col-item" *ngFor="let pile of cardState.tableau.piles"
     cdkDropList
     [cdkDropListData]="pile"
     (cdkDropListDropped)="drop($event)"
     [cdkDropListEnterPredicate]="returnPredicate">
+        <div class="ghost-card"></div>
         <div *ngFor="let card of pile">
-            <app-card [drawnCard]="card"></app-card>
+            <app-card *ngIf="card" [drawnCard]="card"></app-card>
         </div>
+
     </div>
 
-    <div class="placeholder" *ngFor="let pile of cardState.foundation.piles; let xCoord = index"
+    <!-- <div class="placeholder" *ngFor="let pile of cardState.foundation.piles; let xCoord = index"
     cdkDropList
     [cdkDropListData]="pile"
     [cdkDropListEnterPredicate]="foundationPredicate"
@@ -22,4 +25,4 @@ cdkDropListGroup>
             <app-card [drawnCard]="card"></app-card>
         </div>
     </div>
-</div>
+</div> -->
