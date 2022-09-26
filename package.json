@@ -24,7 +24,7 @@
     "@ngxs/store": "^3.6.2",
     "angular": "^1.8.0",
     "bootstrap": "^4.4.1",
-    "cdk": "^1.35.0",
+    "cdk": "^1.174.0",
     "drag-drop": "^6.0.0",
     "jquery": "^3.5.0",
     "ngx-drag-drop": "^2.0.0",
